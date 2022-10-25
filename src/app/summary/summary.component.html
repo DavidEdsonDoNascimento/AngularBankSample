@@ -1,0 +1,26 @@
+<section class="container">
+  <h2 class="titulo">Extrato de Transferências</h2>
+  <table class="tabela">
+    <thead class="tabela__cabecalho">
+      <tr>
+        <th class="tabela__cabecalho__conteudo">DATA</th>
+        <th class="tabela__cabecalho__conteudo">DESTINO</th>
+        <th class="tabela__cabecalho__conteudo">VALOR</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="transferencias.length; else semtransferencias">
+      <tr class="tabela__linha" *ngFor="let transferecia of transferencias">
+        <td class="tabela__linha__conteudo">
+          {{ transferecia.data | date: "short" }}
+        </td>
+        <td class="tabela__linha__conteudo">
+          {{ transferecia.destino }}
+        </td>
+        <td class="tabela__linha__conteudo">R${{ transferecia.valor }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #semtransferencias>
+    <p>Nenhuma transferecia cadastrada!</p>
+  </ng-template>
+</section>
